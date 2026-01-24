@@ -29,9 +29,9 @@ arbitrary_unit_perpendicular :: (v: Math.Vector3) -> Math.Vector3 {
     eps := 0.001;
     almost_aligned_with_y := Math.abs(v.x) <= eps && Math.abs(v.z) <= eps;
     if (almost_aligned_with_y) { // then use something not close to y
-        crosser = x3;
+        crosser = X3;
     } else {
-        crosser = y3;
+        crosser = Y3;
     }
     return normalized_cross(v, crosser);
 }
