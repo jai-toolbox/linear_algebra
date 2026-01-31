@@ -1,7 +1,7 @@
 Math:: #import "Math";
 
 #import "turns";
-#import "math";
+#import "tbx_math";
 
 // @todo are we going clockwise or counter clockwise?
 rotate_turns :: (v : Math.Vector2, t: float, r_dir : Rotation_Direction = .CCW) -> Math.Vector2 {
