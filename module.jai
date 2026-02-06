@@ -1,10 +1,10 @@
-Math:: #import "Math";
+#import "Math";
 
 #import "tbx/turns";
 #import "tbx/math";
 
 // @todo are we going clockwise or counter clockwise?
-rotate_turns :: (v : Math.Vector2, t: float, r_dir : Rotation_Direction = .CCW) -> Math.Vector2 {
+rotate_turns :: (v : Vector2, t: float, r_dir : Rotation_Direction = .CCW) -> Vector2 {
     if (r_dir == .CW) t *= -1;
     if (t == one_quarter_turn) {
         return .{-v.y, v.x};
@@ -24,10 +24,10 @@ rotate_turns :: (v : Math.Vector2, t: float, r_dir : Rotation_Direction = .CCW) 
     return .{v.x * cos_t- v.y * sin_t, v.x * sin_t+ v.y * cos_t};
 }
 
-arbitrary_unit_perpendicular :: (v: Math.Vector3) -> Math.Vector3 {
-    crosser: Math.Vector3;
+arbitrary_unit_perpendicular :: (v: Vector3) -> Vector3 {
+    crosser: Vector3;
     eps := 0.001;
-    almost_aligned_with_y := Math.abs(v.x) <= eps && Math.abs(v.z) <= eps;
+    almost_aligned_with_y := abs(v.x) <= eps && abs(v.z) <= eps;
     if (almost_aligned_with_y) { // then use something not close to y
         crosser = X3;
     } else {
@@ -36,3 +36,13 @@ arbitrary_unit_perpendicular :: (v: Math.Vector3) -> Math.Vector3 {
     return normalized_cross(v, crosser);
 }
 
+create_change_of_basis_matrix :: (basis : [3] Vector3) {
+    return make_matrix_from_cols(basis[0], basis[1], basis[2]);
+}
+
+
+Direction :: enum {
+    FORWARD;
+    RIGHT;
+    UP;
+}
